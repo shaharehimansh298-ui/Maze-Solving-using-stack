@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Solver Using Stack | DS Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">🧩 STACK<span>LAB</span></div>
+    <div class="subtitle">DATA STRUCTURES SIMULATION PROJECT</div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">ALGORITHM VISUALIZER</p>
+            <h1>Maze Solver <span>Using Stack</span></h1>
+            <p class="description">
+                Explore Depth-First Search (DFS), stack operations,
+                and backtracking through an interactive maze.
+            </p>
+        </div>
+        <div class="complexity">
+            <span>TIME COMPLEXITY</span>
+            <strong>O(V + E)</strong>
+            <small>DFS with adjacency traversal</small>
+        </div>
+    </section>
+
+    <section class="toolbar">
+        <div class="control-group">
+            <label for="speed">Animation Speed</label>
+            <select id="speed">
+                <option value="250">Slow</option>
+                <option value="100" selected>Normal</option>
+                <option value="20">Fast</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="size">Maze Size</label>
+            <select id="size">
+                <option value="12">12 × 12</option>
+                <option value="16" selected>16 × 16</option>
+                <option value="20">20 × 20</option>
+                <option value="24">24 × 24</option>
+            </select>
+        </div>
+
+        <button id="randomBtn" class="btn secondary">
+            ↻ Random Maze
+        </button>
+        <button id="editBtn" class="btn secondary">
+            ✎ Edit Walls: OFF
+        </button>
+        <button id="solveBtn" class="btn primary">
+            ▶ Solve Maze
+        </button>
+        <button id="stepBtn" class="btn secondary">
+            Step
+        </button>
+        <button id="pauseBtn" class="btn secondary">
+            ❚❚ Pause
+        </button>
+        <button id="resetBtn" class="btn danger">
+            ↺ Reset
+        </button>
+    </section>
+
+    <section class="legend">
+        <span><i class="cell-demo start-demo"></i> Start</span>
+        <span><i class="cell-demo end-demo"></i> Finish</span>
+        <span><i class="cell-demo wall-demo"></i> Wall</span>
+        <span><i class="cell-demo visited-demo"></i> Visited</span>
+        <span><i class="cell-demo current-demo"></i> Current</span>
+        <span><i class="cell-demo path-demo"></i> Final Path</span>
+        <span class="edit-hint">Tip: Enable Edit Walls and click a cell.</span>
+    </section>
+
+    <section class="workspace">
+        <div class="panel maze-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Maze Playground</h2>
+                    <p>Watch DFS explore the maze.</p>
+                </div>
+                <span id="status" class="status">READY</span>
+            </div>
+
+            <div class="maze-wrapper">
+                <div id="maze" aria-label="Interactive maze grid"></div>
+            </div>
+
+            <div class="maze-footer">
+                <span>🟢 START → 🔴 FINISH</span>
+                <span id="progress">Ready to begin</span>
+            </div>
+        </div>
+
+        <aside class="panel stack-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Stack Memory</h2>
+                    <p>LIFO: Last In, First Out</p>
+                </div>
+                <span class="stack-count" id="stackCount">0</span>
+            </div>
+
+            <div class="stack-top">TOP OF STACK ↓</div>
+            <div id="stackList" class="stack-list">
+                <div class="empty-stack">Stack is empty</div>
+            </div>
+
+            <div class="stack-bottom">BOTTOM OF STACK</div>
+
+            <div class="operation-box">
+                <span>LAST OPERATION</span>
+                <strong id="lastOperation">Waiting for DFS</strong>
+                <p id="operationDetail">
+                    Press Solve Maze to start the simulation.
+                </p>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>DFS Pseudocode</h3>
+                <pre>push(start)
+while stack not empty:
+    current = top()
+    if current == finish:
+        break
+    if unvisited neighbor exists:
+        push(neighbor)
+    else:
+        pop() // backtrack</pre>
+            </div>
+        </aside>
+    </section>
+
+    <section class="stats-grid">
+        <div class="stat-card">
+            <span>CELLS VISITED</span>
+            <strong id="visitedStat">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>STACK OPERATIONS</span>
+            <strong id="operationsStat">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>PATH LENGTH</span>
+            <strong id="pathStat">—</strong>
+        </div>
+        <div class="stat-card">
+            <span>MAX STACK SIZE</span>
+            <strong id="maxStackStat">0</strong>
+        </div>
+    </section>
+
+    <section class="panel explanation">
+        <h2>How the Algorithm Works</h2>
+        <div class="steps">
+            <div><b>01</b><h3>Push</h3>
+                <p>Add the starting cell to the stack.</p></div>
+            <div><b>02</b><h3>Explore</h3>
+                <p>Push an unvisited, valid neighboring cell.</p></div>
+            <div><b>03</b><h3>Backtrack</h3>
+                <p>Pop a dead-end cell when no valid neighbor exists.</p></div>
+            <div><b>04</b><h3>Finish</h3>
+                <p>Stop when the destination is reached.</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>DS Mini Project • Maze Solver Using Stack & DFS</p>
+    </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
